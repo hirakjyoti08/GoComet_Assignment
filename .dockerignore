@@ -1,0 +1,9 @@
+**/node_modules
+**/dist
+backend/data
+.git
+.claude
+*.pdf
+e2e
+**/coverage
+docs

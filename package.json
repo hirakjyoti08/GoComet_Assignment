@@ -1,0 +1,17 @@
+{
+  "name": "british-auction-rfq",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install && npm --prefix e2e install",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "dev:api": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix frontend run dev",
+    "migrate": "npm --prefix backend run migrate",
+    "test:pg": "npm --prefix backend run test:pg",
+    "test:coverage": "npm --prefix backend run test:coverage && npm --prefix frontend run test:coverage",
+    "test:e2e": "npm --prefix e2e test"
+  }
+}

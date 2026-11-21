@@ -1,0 +1,26 @@
+{
+  "name": "british-auction-backend",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "migrate": "node scripts/migrate.js",
+    "seed": "node src/seed.js",
+    "test": "node --test \"test/**/*.test.js\"",
+    "test:pg": "node --test --test-concurrency=1 \"test/**/*.test.js\"",
+    "load:bids": "node scripts/concurrent-bids.js",
+    "test:coverage": "mkdir -p coverage && node --test --experimental-test-coverage --test-coverage-exclude=\"test/**\" --test-coverage-lines=85 --test-coverage-branches=80 --test-coverage-functions=85 --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info \"test/**/*.test.js\""
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.17",
+    "express": "^5.1.0",
+    "pg": "^8.23.1",
+    "pino": "^10.4.0",
+    "pino-http": "^11.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+backend/data/
+.DS_Store
+e2e/test-results/
+e2e/playwright-report/
+**/coverage/
+.archify/
+.claude/

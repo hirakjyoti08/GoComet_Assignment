@@ -1,0 +1,57 @@
+# Production-like stack: PostgreSQL + one-off migration job + 2 app instances behind nginx.
+#   docker compose up --build        → http://localhost:8080
+#   docker compose run --rm seed     → demo accounts and auctions
+#   docker compose up --scale app=4  → more instances (nginx resolves all of them)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: auction
+      POSTGRES_PASSWORD: auction   # change for anything non-local
+      POSTGRES_DB: auction
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U auction -d auction"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  migrate:
+    build: .
+    command: ["node", "scripts/migrate.js"]
+    environment:
+      DATABASE_URL: postgres://auction:auction@db:5432/auction
+    depends_on:
+      db: { condition: service_healthy }
+
+  app:
+    build: .
+    deploy:
+      replicas: 2
+    environment:
+      DATABASE_URL: postgres://auction:auction@db:5432/auction
+      MIGRATE_ON_START: "false"        # the migrate job owns schema changes
+      SECURE_COOKIES: "false"          # local http; set true behind HTTPS
+      TRUST_PROXY_HOPS: "1"
+      DB_POOL_MAX: "10"
+      RATE_LIMIT_ENABLED: ${RATE_LIMIT_ENABLED:-true}   # CI's load test sets false
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  seed:
+    build: .
+    command: ["node", "src/seed.js"]
+    profiles: ["tools"]
+    environment:
+      DATABASE_URL: postgres://auction:auction@db:5432/auction
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  lb:
+    image: nginx:1.27-alpine
+    ports: ["8080:80"]
+    volumes: ["./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro"]
+    depends_on: [app]
+
+volumes:
+  pgdata:
