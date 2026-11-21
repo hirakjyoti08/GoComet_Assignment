@@ -1,6 +1,6 @@
 # The Architecture, Explained Simply
 
-This is the plain-language version. If you want the technical details, read [HLD.md](HLD.md) and [CODE_WALKTHROUGH.md](CODE_WALKTHROUGH.md). This page tries to explain the *ideas* without jargon.
+This is the plain-language version. If you want the technical details, read [HLD.md](HLD.md). This page tries to explain the *ideas* without jargon.
 
 ---
 

@@ -13,3 +13,6 @@ e2e/playwright-report/
 
 # Assignment brief (not for publishing)
 *.pdf
+
+# Private notes
+docs/CODE_WALKTHROUGH.md
