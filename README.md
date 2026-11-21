@@ -7,6 +7,7 @@ Built with **Node.js, Express, PostgreSQL and React**. It runs locally with zero
 ---
 
 ## Contents
+- [Screenshots](#screenshots)
 - [The problem](#the-problem)
 - [How a British auction works](#how-a-british-auction-works)
 - [Features](#features)
@@ -20,6 +21,26 @@ Built with **Node.js, Express, PostgreSQL and React**. It runs locally with zero
 - [Troubleshooting](#troubleshooting)
 - [Documentation](#documentation)
 - [Known limitations](#known-limitations)
+
+---
+
+## Screenshots
+
+**Sign in.** Demo accounts are listed for quick access.
+
+![Sign-in page](img/signin.png)
+
+**Buyer: auction list.** Every RFQ with its current lowest bid, current and forced close, extension count (`+1 ext`), status and supplier participation.
+
+![Buyer auction list](img/buyer_auction.png)
+
+**Buyer: dashboard.** Average bids, supplier participation, price improvement, and extended vs non-extended auctions compared, with per-RFQ savings.
+
+![Buyer dashboard](img/buyer_dashboard.png)
+
+**Supplier: invited auctions.** A supplier sees only their own rank (L1, L2…) and best bid. The L1 price shows only when the buyer allows it; otherwise it reads "hidden".
+
+![Supplier auction list](img/supplier.png)
 
 ---
 
