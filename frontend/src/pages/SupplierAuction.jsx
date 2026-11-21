@@ -130,7 +130,7 @@ export default function SupplierAuction({ rfq, status, now, reload }) {
       {status === 'CANCELLED' && <div className="card banner banner-danger"><strong>This RFQ was cancelled by the buyer</strong> — {rfq.cancel_reason}</div>}
       {status === 'PAUSED' && <div className="card banner banner-warn">The buyer has paused bidding. The remaining time is frozen and will resume where it left off.</div>}
       {rfq.award && (rfq.award.awarded_to_me
-        ? <div className="card banner banner-success"><strong>🏆 Congratulations — you won this RFQ.</strong> The buyer will contact you with next steps.</div>
+        ? <div className="card banner banner-success"><strong>Congratulations — you won this RFQ.</strong> The buyer will contact you with next steps.</div>
         : <div className="card banner">This RFQ was awarded to another supplier.</div>)}
 
       <Position rfq={rfq} />

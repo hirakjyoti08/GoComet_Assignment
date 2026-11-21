@@ -271,7 +271,7 @@ The listing and dashboard load all bids for the relevant RFQs in **one** query (
 - **`server.js`:**
   1. Connect the DB and optionally migrate.
   2. Wire hub → realtime → service, auth, rate limiter and scheduler, then start the HTTP server.
-  3. On **SIGTERM**: readiness goes to 503, the scheduler stops, SSE clients are closed so they reconnect elsewhere, in-flight requests finish, then the pool closes.
+  3. On **SIGTERM**, **SIGINT** (Ctrl+C) or **SIGTSTP** (Ctrl+Z, caught so a paused server never keeps holding the port and the embedded database): readiness goes to 503, the scheduler stops, SSE clients are closed so they reconnect elsewhere, in-flight requests finish, then the pool closes.
 
 ### 4.10 `seed.js` — demo data
 - Creates (or reuses) **demo accounts**: `buyer@demo.test` and six suppliers, all with password `demo1234`.

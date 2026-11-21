@@ -22,9 +22,9 @@ function Actions({ rfq, status, reload }) {
   return (
     <div className="action-bar">
       <div className="action-buttons">
-        {status === 'UPCOMING' && <Link to={`/rfqs/${rfq.id}/edit`} className="btn">✏️ Edit RFQ</Link>}
-        {status === 'ACTIVE' && <button className="btn" disabled={busy} onClick={() => run(() => api.pause(rfq.id))}>⏸ Pause</button>}
-        {status === 'PAUSED' && <button className="btn btn-primary" disabled={busy} onClick={() => run(() => api.resume(rfq.id))}>⏯ Resume</button>}
+        {status === 'UPCOMING' && <Link to={`/rfqs/${rfq.id}/edit`} className="btn">Edit RFQ</Link>}
+        {status === 'ACTIVE' && <button className="btn" disabled={busy} onClick={() => run(() => api.pause(rfq.id))}>Pause bidding</button>}
+        {status === 'PAUSED' && <button className="btn btn-primary" disabled={busy} onClick={() => run(() => api.resume(rfq.id))}>Resume bidding</button>}
         {canCancel && mode !== 'cancel' && <button className="btn btn-danger-ghost" onClick={() => setMode('cancel')}>Cancel RFQ</button>}
       </div>
       {mode === 'cancel' && (
@@ -64,7 +64,7 @@ function AwardPanel({ rfq, reload }) {
 
   return (
     <form className="card award-panel" onSubmit={submit}>
-      <h2>🏆 Award this RFQ</h2>
+      <h2>Award this RFQ</h2>
       <p className="muted small">The auction has closed. Choose the winning supplier — L1 is pre-selected.</p>
       <div className="grid-2">
         <Field label="Winning supplier">
@@ -88,7 +88,7 @@ function AwardResult({ rfq }) {
   const a = rfq.award;
   return (
     <div className="card banner banner-success">
-      <strong>🏆 Awarded to {a.supplier_name}</strong> at {money(a.bid?.total_minor, rfq.currency)} on {dateTime(a.awarded_at)}
+      <strong>Awarded to {a.supplier_name}</strong> at {money(a.bid?.total_minor, rfq.currency)} on {dateTime(a.awarded_at)}
       {!a.was_l1 && <span className="chip">not L1</span>}
       {a.reason && <div className="small">Reason: {a.reason}</div>}
     </div>

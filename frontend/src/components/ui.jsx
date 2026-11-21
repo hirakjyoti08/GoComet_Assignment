@@ -65,10 +65,11 @@ export function ConfigSummary({ rfq }) {
   );
 }
 
-const LOG_ICON = {
-  RFQ_CREATED: '📝', RFQ_UPDATED: '✏️', SUPPLIER_INVITED: '✉️', AUCTION_STARTED: '▶', BID_SUBMITTED: '💬',
-  TIME_EXTENDED: '⏱', EXTENSION_CAPPED: '⛔', AUCTION_PAUSED: '⏸', AUCTION_RESUMED: '⏯', AUCTION_CLOSED: '■',
-  AUCTION_FORCE_CLOSED: '🔒', AUCTION_CANCELLED: '✖', RFQ_AWARDED: '🏆',
+// Short ledger codes instead of pictograms, like entries in a shipping log.
+const LOG_CODE = {
+  RFQ_CREATED: 'New', RFQ_UPDATED: 'Edit', SUPPLIER_INVITED: 'Inv', AUCTION_STARTED: 'Open', BID_SUBMITTED: 'Bid',
+  TIME_EXTENDED: 'Ext', EXTENSION_CAPPED: 'Cap', AUCTION_PAUSED: 'Hold', AUCTION_RESUMED: 'Run', AUCTION_CLOSED: 'Shut',
+  AUCTION_FORCE_CLOSED: 'Stop', AUCTION_CANCELLED: 'Void', RFQ_AWARDED: 'Won',
 };
 
 export function ActivityLog({ activity }) {
@@ -79,7 +80,7 @@ export function ActivityLog({ activity }) {
         <ol className="log">
           {activity.map((a) => (
             <li key={a.id} className={`log-${a.type.toLowerCase()}`}>
-              <span className="log-icon" aria-hidden="true">{LOG_ICON[a.type] || '•'}</span>
+              <span className="log-icon" aria-hidden="true">{LOG_CODE[a.type] || 'Note'}</span>
               <div>
                 <div className="small muted">{dateTime(a.created_at)}</div>
                 <div>{a.message}</div>

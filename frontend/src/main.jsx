@@ -8,13 +8,19 @@ import AuctionDetails from './pages/AuctionDetails.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/600.css';
 import './styles.css';
 
 function TopBar() {
   const { user, logout } = useAuth();
   return (
     <header className="topbar">
-      <Link to="/" className="brand"><span className="brand-mark">⚑</span> British Auction RFQ</Link>
+      <Link to="/" className="brand"><span className="brand-mark" aria-hidden="true" />RFQ Auction Desk<span className="brand-sub">British auction</span></Link>
       {user && (
         <nav>
           <NavLink to="/" end>Auctions</NavLink>

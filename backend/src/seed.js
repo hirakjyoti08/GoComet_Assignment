@@ -27,7 +27,7 @@ async function ensureUser(email, name, role, companyName) {
   return auth.getUser(id);
 }
 
-const buyer = await ensureUser('buyer@demo.test', 'Priya (Acme Logistics)', 'BUYER');
+const buyer = await ensureUser('buyer@demo.test', 'Hirak (Acme Logistics)', 'BUYER');
 const s = {
   maersk: await ensureUser('maersk@demo.test', 'Maersk desk', 'SUPPLIER', 'Maersk Line'),
   hapag: await ensureUser('hapag@demo.test', 'Hapag desk', 'SUPPLIER', 'Hapag-Lloyd'),

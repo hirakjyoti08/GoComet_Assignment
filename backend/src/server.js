@@ -44,6 +44,9 @@ async function main() {
   }
   process.on('SIGTERM', () => shutdown('SIGTERM'));
   process.on('SIGINT', () => shutdown('SIGINT'));
+  // Ctrl+Z (SIGTSTP) would only pause the server, leaving it holding the port and the embedded
+  // database so the next `npm start` fails. Treat it like Ctrl+C and shut down cleanly instead.
+  process.on('SIGTSTP', () => shutdown('SIGTSTP'));
 }
 
 main().catch((err) => {

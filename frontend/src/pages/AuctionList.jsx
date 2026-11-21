@@ -82,7 +82,7 @@ export default function AuctionList() {
                       <CloseCell r={r} status={status} now={now} />
                       <td>{dateTime(r.forced_close_at)}</td>
                       <td><StatusBadge status={status} />
-                        {r.awarded_to_me === true && <div className="small win">You won 🏆</div>}</td>
+                        {r.awarded_to_me === true && <div className="small win">Awarded to you</div>}</td>
                     </>}
                   </tr>
                 );
