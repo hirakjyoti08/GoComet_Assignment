@@ -260,7 +260,6 @@ Run `npm run build` and restart, or use dev mode (`npm run dev:web`), which relo
 | [docs/ARCHITECTURE_SIMPLE.md](docs/ARCHITECTURE_SIMPLE.md) | The whole system in plain language: **start here** |
 | [docs/HLD.md](docs/HLD.md) | High-level design, architecture diagrams, key decisions |
 | [docs/SCHEMA.md](docs/SCHEMA.md) | Database schema and table relationships |
-| [docs/CODE_WALKTHROUGH.md](docs/CODE_WALKTHROUGH.md) | Every file explained |
 | [docs/TESTING.md](docs/TESTING.md) | Test strategy, layers and CI |
 
 ## Known limitations
